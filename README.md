@@ -54,7 +54,7 @@ cuda-soma-vetores/
 
 1. **Abrir o notebook:** Clique no badge abaixo ou abra o arquivo `notebook/benchmark.ipynb` diretamente no Colab:
 
-   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/WESIOFILHO/cuda-soma-vetores/blob/main/notebook/benchmark.ipynb)
+   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wesioplayconstructor/cuda-soma-vetores/blob/main/notebook/benchmark.ipynb)
 
 2. **Selecionar GPU:** Vá em `Runtime → Change runtime type → T4 GPU` e salve.
 
