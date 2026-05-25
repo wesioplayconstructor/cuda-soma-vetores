@@ -266,7 +266,7 @@ O uso do assistente de IA generativa **Ash (Hermes Agent)**, acessado pela **Her
 USO_DE_IA.md
 ```
 
-Esse arquivo informa em quais momentos a IA foi usada, quais modelos/motores foram informados nas sessões (incluindo `gemma-4` e `DeepSeek`) e o que foi aprendido com o apoio.
+Esse arquivo informa em quais momentos a IA foi usada, quais modelos/motores foram informados nas sessões (`gemma-4`, `GPT-5.5` via API OpenAI, `DeepSeek` via API compatível) e o que foi aprendido com o apoio.
 
 ---
 
