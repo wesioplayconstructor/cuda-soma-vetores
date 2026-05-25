@@ -1,0 +1,30 @@
+# Binários e objetos
+*.o
+*.out
+soma_cpu
+soma_gpu
+verifica_cpu
+verifica_gpu
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Arquivos de resultados (são gerados pelo notebook)
+# Descomente se quiser ignorar:
+# resultados/*.csv
+# resultados/*.png
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Arquivo de planejamento local (não vai pro GitHub)
+PLANO_TRABALHO.md
