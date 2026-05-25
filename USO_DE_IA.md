@@ -6,11 +6,23 @@ Este documento descreve o uso de ferramenta de Inteligência Artificial generati
 
 ## Ferramenta utilizada
 
-| Ferramenta | Uso |
-|---|---|
-| Ash (Hermes Agent) | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA e apoio na revisão dos arquivos do projeto. |
+| Ferramenta | Ambiente | Modelo/motor informado pelo Hermes | Uso |
+|---|---|---|---|
+| Ash (Hermes Agent) | Hermes WebUI | `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M` | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA e apoio na revisão dos arquivos do projeto. |
 
-> Até o momento, a única ferramenta de IA generativa usada neste trabalho foi o Ash (Hermes Agent).
+> Até o momento, a única ferramenta de IA generativa usada neste trabalho foi o Ash, executado por meio do Hermes Agent.
+
+---
+
+## Ambiente e modelo utilizado
+
+Durante o apoio ao trabalho, utilizei o assistente **Ash**, configurado dentro do **Hermes Agent**. A interação foi feita pela interface **Hermes WebUI**. O modelo/motor informado pela sessão do Hermes foi:
+
+```text
+gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M
+```
+
+Esse registro é incluído para deixar transparente qual ambiente de IA foi usado no processo de planejamento, revisão e documentação do projeto.
 
 ---
 
