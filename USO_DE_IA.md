@@ -1,28 +1,37 @@
 # Uso de IA Generativa
 
-Este documento descreve o uso de ferramenta de Inteligência Artificial generativa durante o desenvolvimento deste trabalho, conforme as diretrizes da disciplina.
+Este documento descreve o uso de ferramentas de Inteligência Artificial generativa durante o desenvolvimento deste trabalho, conforme as diretrizes da disciplina.
 
 ---
 
-## Ferramenta utilizada
+## Ferramentas, ambientes e modelos utilizados
 
-| Ferramenta | Ambiente | Modelo/motor informado pelo Hermes | Uso |
+| Ferramenta/assistente | Ambiente | Modelo/motor informado | Uso no trabalho |
 |---|---|---|---|
-| Ash (Hermes Agent) | Hermes WebUI | `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M` | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA e apoio na revisão dos arquivos do projeto. |
+| Ash (Hermes Agent) | Hermes WebUI | `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M` | Planejamento inicial do trabalho, organização do repositório, explicação de conceitos de CUDA e apoio na revisão dos arquivos do projeto. |
+| Codex | Ambiente Codex | `GPT-5.5` | Refinamento posterior da documentação, correção da declaração de uso de IA e apoio na organização final do repositório. |
 
-> Até o momento, a única ferramenta de IA generativa usada neste trabalho foi o Ash, executado por meio do Hermes Agent.
+> O trabalho começou com o assistente Ash executado via Hermes Agent/Hermes WebUI e, posteriormente, passou a usar o Codex com o modelo/motor GPT-5.5.
 
 ---
 
-## Ambiente e modelo utilizado
+## Ambiente e modelos utilizados
 
-Durante o apoio ao trabalho, utilizei o assistente **Ash**, configurado dentro do **Hermes Agent**. A interação foi feita pela interface **Hermes WebUI**. O modelo/motor informado pela sessão do Hermes foi:
+Durante o apoio ao trabalho, foram utilizados dois ambientes de IA generativa:
+
+1. **Ash no Hermes Agent/WebUI**, com o modelo/motor informado pela sessão:
 
 ```text
 gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M
 ```
 
-Esse registro é incluído para deixar transparente qual ambiente de IA foi usado no processo de planejamento, revisão e documentação do projeto.
+2. **Codex**, com o modelo/motor informado pelo usuário durante a continuidade do trabalho:
+
+```text
+GPT-5.5
+```
+
+Esse registro é incluído para deixar transparente quais ambientes e modelos de IA foram usados no processo de planejamento, revisão e documentação do projeto.
 
 ---
 
@@ -31,6 +40,8 @@ Esse registro é incluído para deixar transparente qual ambiente de IA foi usad
 ### 1. Planejamento e organização do projeto
 
 **Ferramenta:** Ash (Hermes Agent)
+
+**Ambiente/modelo:** Hermes WebUI com `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M`
 
 **Quando:** Início do trabalho.
 
@@ -44,6 +55,8 @@ Esse registro é incluído para deixar transparente qual ambiente de IA foi usad
 
 **Ferramenta:** Ash (Hermes Agent)
 
+**Ambiente/modelo:** Hermes WebUI com `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M`
+
 **Quando:** Durante a preparação da versão paralela em CUDA.
 
 **O que fiz:** Usei a IA para esclarecer conceitos como kernel, thread, bloco, grid, memória do host, memória do device, `cudaMalloc`, `cudaMemcpy` e o cálculo do índice global da thread com `blockIdx.x * blockDim.x + threadIdx.x`.
@@ -54,13 +67,15 @@ Esse registro é incluído para deixar transparente qual ambiente de IA foi usad
 
 ### 3. Revisão e documentação dos arquivos do repositório
 
-**Ferramenta:** Ash (Hermes Agent)
+**Ferramentas:** Ash (Hermes Agent) e Codex
 
-**Quando:** Durante a organização do repositório GitHub.
+**Ambientes/modelos:** Hermes WebUI com `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M` e Codex com `GPT-5.5`
 
-**O que fiz:** Usei a IA para revisar e melhorar arquivos de documentação, como `README.md` e este arquivo `USO_DE_IA.md`, além de orientar comandos de Git usando SSH.
+**Quando:** Durante a organização e o refinamento do repositório GitHub.
 
-**O que aprendi:** Aprendi a deixar o repositório mais organizado e claro para avaliação, separando código, notebook, resultados, relatório, slides e documentação.
+**O que fiz:** Usei IA para revisar e melhorar arquivos de documentação, como `README.md` e este arquivo `USO_DE_IA.md`, além de orientar comandos de Git usando SSH.
+
+**O que aprendi:** Aprendi a deixar o repositório mais organizado e claro para avaliação, separando código, notebook, resultados, relatório, slides e documentação, e registrando de forma transparente o uso de IA.
 
 ---
 
