@@ -266,7 +266,7 @@ O uso do assistente de IA generativa **Ash (Hermes Agent)**, acessado pela **Her
 USO_DE_IA.md
 ```
 
-Esse arquivo informa em quais momentos a IA foi usada, quais modelos/motores foram informados nas sessões e o que foi aprendido com o apoio. Quando houver menção a Codex/GPT-5.5, ela se refere ao backend/modelo/API usado pelo Ash/Hermes, e não ao uso do Codex como ferramenta autônoma separada.
+Esse arquivo informa em quais momentos a IA foi usada, quais modelos/motores foram informados nas sessões (incluindo `gemma-4` e `DeepSeek`) e o que foi aprendido com o apoio.
 
 ---
 

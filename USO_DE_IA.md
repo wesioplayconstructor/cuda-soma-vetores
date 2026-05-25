@@ -8,9 +8,9 @@ Este documento descreve o uso de Inteligência Artificial generativa durante o d
 
 | Ferramenta/assistente | Ambiente | Modelos/motores informados | Uso no trabalho |
 |---|---|---|---|
-| Ash (Hermes Agent) | Hermes WebUI | `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M`; posteriormente `GPT-5.5` via API/modelos Codex, quando aplicável | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA, revisão e melhoria dos arquivos de código, notebook e documentação. |
+| Ash (Hermes Agent) | Hermes WebUI | `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M`; posteriormente `DeepSeek` (via OpenAI API compatível) | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA, revisão e melhoria dos arquivos de código, notebook e documentação. |
 
-> A ferramenta/assistente utilizada no trabalho foi o **Ash (Hermes Agent)** pela **Hermes WebUI**. Quando houver menção a `GPT-5.5` ou Codex, isso se refere ao **modelo/backend/API usado pelo Ash/Hermes**, e não ao uso do Codex como ferramenta autônoma separada.
+> A ferramenta/assistente utilizada no trabalho foi o **Ash (Hermes Agent)** pela **Hermes WebUI**. Os modelos informados variaram conforme a sessão, incluindo `gemma-4`, `DeepSeek` e outros backends compatíveis com a API da OpenAI.
 
 ---
 
@@ -22,10 +22,10 @@ Ao longo das sessões, os modelos/motores informados foram:
 
 ```text
 gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M
-GPT-5.5 via API/modelos Codex, quando aplicável
+DeepSeek (via API compatível com OpenAI)
 ```
 
-Não utilizei GitHub Copilot, Claude, ChatGPT nem Codex como ferramentas autônomas para este trabalho. A programação, revisão e orientação foram feitas por meio do Ash/Hermes Agent; eventuais referências a Codex indicam apenas o backend/modelo/API disponível na sessão.
+Não utilizei GitHub Copilot, Claude, ChatGPT, GPT-5.5 nem Codex como ferramentas autônomas para este trabalho. A programação, revisão e orientação foram feitas por meio do Ash/Hermes Agent.
 
 ---
 
@@ -63,7 +63,7 @@ Não utilizei GitHub Copilot, Claude, ChatGPT nem Codex como ferramentas autôno
 
 **Ferramenta:** Ash (Hermes Agent)
 
-**Ambiente/modelo:** Hermes WebUI com `GPT-5.5` via API/modelos Codex, quando aplicável
+**Ambiente/modelo:** Hermes WebUI com `DeepSeek` (via API compatível com OpenAI)
 
 **Quando:** Durante a revisão dos arquivos `soma_cpu.c`, `soma_gpu.cu` e `benchmark.ipynb`.
 
@@ -77,7 +77,7 @@ Não utilizei GitHub Copilot, Claude, ChatGPT nem Codex como ferramentas autôno
 
 **Ferramenta:** Ash (Hermes Agent)
 
-**Ambiente/modelo:** Hermes WebUI com `GPT-5.5` via API/modelos Codex, quando aplicável
+**Ambiente/modelo:** Hermes WebUI com `DeepSeek` (via API compatível com OpenAI)
 
 **Quando:** Durante a organização final do repositório GitHub.
 
@@ -93,4 +93,4 @@ Declaro que utilizei IA generativa apenas como ferramenta de apoio ao aprendizad
 
 ---
 
-*Documento criado em 25/05/2026 e atualizado conforme o andamento do trabalho.*
+*Documento criado em 25/05/2026 e atualizado em 25/05/2026 conforme o andamento do trabalho.*
