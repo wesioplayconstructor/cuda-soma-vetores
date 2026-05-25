@@ -1,106 +1,283 @@
-# Soma de Vetores em CUDA
+# Soma de Vetores em CUDA — CPU vs GPU
 
-Trabalho final da disciplina **Arquitetura de Computadores** — comparação de desempenho entre CPU (sequencial em C) e GPU (paralelo em CUDA) para a operação de soma de vetores.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wesioplayconstructor/cuda-soma-vetores/blob/main/notebook/benchmark.ipynb)
 
-**Autor:** Wésio Filho
-**Disciplina:** Arquitetura de Computadores — 5º Período
-**Professor:** Newarney T. da Costa
-**Instituição:** Bacharelado em Ciência da Computação
-**Período letivo:** 2026/1
+Trabalho final individual da disciplina **Arquitetura de Computadores**, com comparação de desempenho entre uma versão sequencial em **C/CPU** e uma versão paralela em **CUDA/GPU** para soma de vetores.
 
 ---
 
-## Sobre
+## Dados do trabalho
 
-Este projeto implementa a soma de dois vetores (`C[i] = A[i] + B[i]`) de duas formas:
+- **Aluno:** Wésio Filho
+- **Disciplina:** Arquitetura de Computadores
+- **Curso:** Bacharelado em Ciência da Computação — 5º Período
+- **Professor:** Newarney T. da Costa
+- **Período letivo:** 2026/1
+- **Tema:** Paralelismo com CUDA — soma de vetores
 
-- **Versão CPU** (`codigo/soma_cpu.c`): loop sequencial em C
-- **Versão GPU** (`codigo/soma_gpu.cu`): kernel CUDA com uma thread por elemento
+---
 
-Em seguida, compara o desempenho das duas versões para diferentes tamanhos de vetor (1.000, 100.000, 1.000.000 e 10.000.000 elementos).
+## Problema
+
+Dados dois vetores `A` e `B`, ambos com `N` elementos do tipo `float`, calcular um terceiro vetor `C` da seguinte forma:
+
+```c
+C[i] = A[i] + B[i]
+```
+
+para todo `i` de `0` até `N - 1`.
+
+Neste projeto, a operação é implementada de duas formas:
+
+1. **CPU:** versão sequencial em C, usando um laço `for`.
+2. **GPU:** versão paralela em CUDA, usando uma kernel com uma thread por elemento.
 
 ---
 
 ## Estrutura do repositório
 
-```
+```text
 cuda-soma-vetores/
 ├── codigo/
-│   ├── soma_cpu.c          # Versão sequencial (CPU)
-│   └── soma_gpu.cu         # Versão paralela (GPU/CUDA)
+│   ├── soma_cpu.c              # Implementação sequencial em C
+│   └── soma_gpu.cu             # Implementação paralela em CUDA
 ├── notebook/
-│   └── benchmark.ipynb     # Notebook Colab com benchmark + gráficos
+│   └── benchmark.ipynb         # Notebook para executar no Google Colab
 ├── resultados/
-│   ├── tempos.csv          # Dados brutos de tempo
-│   ├── grafico_tempos.png  # Gráfico CPU vs GPU (escala log)
-│   └── grafico_speedup.png # Gráfico de speedup
+│   ├── tempos.csv              # Tempos medidos pelo benchmark
+│   ├── grafico_tempos.png      # Gráfico de tempo CPU vs GPU
+│   └── grafico_speedup.png     # Gráfico de speedup
 ├── relatorio/
-│   └── relatorio_sbc.pdf   # Artigo no template SBC
+│   └── relatorio_sbc.pdf       # Relatório final no template SBC
 ├── slides/
-│   └── apresentacao.pdf    # Slides de apresentação
-├── README.md               # Este arquivo
-└── USO_DE_IA.md            # Declaração de uso de IA
+│   └── apresentacao.pdf        # Slides da apresentação
+├── docs/
+│   ├── figuras/                # Figuras usadas no relatório/slides
+│   └── referencias/            # Materiais de referência
+├── README.md
+└── USO_DE_IA.md
 ```
 
 ---
 
-## Como rodar no Google Colab
+## Como executar no Google Colab
 
-### Requisitos
-- Conta no Google
-- Navegador com acesso ao [Google Colab](https://colab.research.google.com)
+### 1. Abrir o notebook
 
-### Passo a passo
+Clique no botão abaixo:
 
-1. **Abrir o notebook:** Clique no badge abaixo ou abra o arquivo `notebook/benchmark.ipynb` diretamente no Colab:
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wesioplayconstructor/cuda-soma-vetores/blob/main/notebook/benchmark.ipynb)
 
-   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/wesioplayconstructor/cuda-soma-vetores/blob/main/notebook/benchmark.ipynb)
+Ou acesse manualmente:
 
-2. **Selecionar GPU:** Vá em `Runtime → Change runtime type → T4 GPU` e salve.
+```text
+notebook/benchmark.ipynb
+```
 
-3. **Rodar tudo:** Clique em `Runtime → Run all` ou execute cada célula sequencialmente.
+### 2. Ativar GPU
 
-4. **Resultados:** Os gráficos e a tabela de tempos serão exibidos nas células do notebook e salvos na pasta `resultados/`.
+No Colab:
 
-### Rodando localmente (opcional)
+```text
+Runtime → Change runtime type → T4 GPU → Save
+```
 
-Se você tiver o CUDA Toolkit instalado:
+Depois, rode a célula:
 
 ```bash
-# Versão CPU
-gcc codigo/soma_cpu.c -o soma_cpu
-./soma_cpu
+!nvidia-smi
+```
 
-# Versão GPU
+Se a GPU estiver ativa, o Colab mostrará informações da placa NVIDIA T4.
+
+### 3. Rodar o notebook
+
+No Colab:
+
+```text
+Runtime → Run all
+```
+
+O notebook compila os programas, executa os testes, mede os tempos e gera os gráficos.
+
+---
+
+## Como compilar manualmente
+
+### Versão CPU
+
+```fish
+gcc codigo/soma_cpu.c -o soma_cpu -lm
+./soma_cpu 1000000
+```
+
+### Versão GPU
+
+```fish
 nvcc codigo/soma_gpu.cu -o soma_gpu
-./soma_gpu
+./soma_gpu 1000000
+```
+
+O valor `1000000` representa o tamanho do vetor `N`. Ele pode ser alterado para outros tamanhos, como:
+
+```fish
+./soma_cpu 1000
+./soma_cpu 100000
+./soma_cpu 1000000
+./soma_cpu 10000000
+
+./soma_gpu 1000
+./soma_gpu 100000
+./soma_gpu 1000000
+./soma_gpu 10000000
 ```
 
 ---
 
-## Resultados esperados
+## Metodologia de medição
 
-| N          | Tempo CPU (ms) | Tempo GPU (ms) | Speedup |
-|------------|----------------|----------------|---------|
-| 1.000      | ~0,01          | ~0,1           | < 1     |
-| 100.000    | ~0,3           | ~0,2           | ~1–2    |
-| 1.000.000  | ~3             | ~0,5           | ~6      |
-| 10.000.000 | ~30            | ~2             | ~15     |
+Foram testados quatro tamanhos de vetor:
 
-> **Nota:** Os valores acima são estimativas. Os tempos reais dependem da carga do Colab no momento da execução.
+| Tamanho | Quantidade de elementos |
+|--------:|--------------------------:|
+| 10³     | 1.000                     |
+| 10⁵     | 100.000                   |
+| 10⁶     | 1.000.000                 |
+| 10⁷     | 10.000.000                |
 
-**Conclusão esperada:** Para vetores pequenos, a CPU é mais rápida (overhead de transferência de dados domina). Para vetores grandes, a GPU é significativamente mais rápida thanks ao paralelismo massivo.
+Para cada tamanho, cada versão foi executada **5 vezes**. Em seguida, foi calculada a média dos tempos.
+
+- Na **CPU**, o tempo é medido com `clock_gettime`.
+- Na **GPU**, o tempo é medido com `cudaEvent_t`.
+- O speedup é calculado por:
+
+```text
+speedup = tempo_CPU / tempo_GPU
+```
+
+---
+
+## Saídas esperadas
+
+Os primeiros resultados devem seguir o padrão:
+
+```text
+C[0] = 0
+C[1] = 3
+C[2] = 6
+C[3] = 9
+C[4] = 12
+```
+
+Isso acontece porque:
+
+```text
+A[i] = i
+B[i] = 2*i
+C[i] = A[i] + B[i] = 3*i
+```
+
+Exemplo:
+
+```text
+C[3] = 3 + 6 = 9
+```
+
+---
+
+## Resultados
+
+Após executar o notebook, os seguintes arquivos são gerados:
+
+```text
+resultados/tempos.csv
+resultados/grafico_tempos.png
+resultados/grafico_speedup.png
+```
+
+O gráfico de tempo compara CPU e GPU em função de `N`, usando escala logarítmica. O gráfico de speedup mostra quantas vezes a GPU foi mais rápida do que a CPU.
+
+> Observação: os valores podem variar de acordo com a carga do Google Colab e a GPU disponibilizada no momento da execução.
+
+---
+
+## Conceitos utilizados
+
+- Programação em C
+- CUDA C/C++
+- Kernel CUDA
+- Threads, blocos e grid
+- Memória do host e memória do device
+- Transferência de dados com `cudaMemcpy`
+- Medição de tempo com `clock_gettime` e `cudaEvent_t`
+- Speedup e análise de desempenho
+
+---
+
+## Arquivos principais
+
+### `codigo/soma_cpu.c`
+
+Implementa a soma de vetores na CPU usando um laço sequencial:
+
+```c
+for (int i = 0; i < N; i++) {
+    C[i] = A[i] + B[i];
+}
+```
+
+### `codigo/soma_gpu.cu`
+
+Implementa a soma de vetores na GPU usando uma kernel CUDA:
+
+```cuda
+__global__ void somaVetores(float *A, float *B, float *C, int N) {
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    if (i < N) {
+        C[i] = A[i] + B[i];
+    }
+}
+```
+
+Cada thread calcula um elemento do vetor resultado.
+
+---
+
+## Uso de IA generativa
+
+O uso de ferramentas de IA está documentado no arquivo:
+
+```text
+USO_DE_IA.md
+```
+
+Esse arquivo informa quais ferramentas foram utilizadas, em quais momentos do trabalho e o que foi aprendido com o uso.
 
 ---
 
 ## Referências
 
-1. STALLINGS, W. *Arquitetura e organização de computadores.* 10. ed. Pearson, 2017. Cap. 19.
-2. NVIDIA. *CUDA C++ Programming Guide.* Disponível em: https://docs.nvidia.com/cuda/cuda-c-programming-guide/
-3. HARRIS, M. *An Even Easier Introduction to CUDA.* NVIDIA Blog, 2017. Disponível em: https://developer.nvidia.com/blog/even-easier-introduction-cuda
+1. HARRIS, Mark. **An Even Easier Introduction to CUDA**. NVIDIA Technical Blog, 2017. Disponível em: <https://developer.nvidia.com/blog/even-easier-introduction-cuda>.
+2. NVIDIA. **CUDA C++ Programming Guide**. Disponível em: <https://docs.nvidia.com/cuda/cuda-c-programming-guide/>.
+3. STALLINGS, William. **Arquitetura e Organização de Computadores**. 10. ed. Pearson, 2017.
+4. SBC. **Modelos para publicação de artigos**. Disponível em: <https://www.sbc.org.br/documentos-da-sbc/category/169-templates-para-artigos-e-capitulos-de-livros>.
+
+---
+
+## Status da entrega
+
+- [x] Código CPU
+- [x] Código GPU
+- [x] Notebook de benchmark
+- [x] README
+- [x] Declaração de uso de IA
+- [ ] Resultados gerados no Colab
+- [ ] Relatório SBC em PDF
+- [ ] Slides em PDF
+- [ ] Envio no Moodle
 
 ---
 
 ## Licença
 
-Este projeto é de uso acadêmico, desenvolvido para a disciplina de Arquitetura de Computadores.
+Projeto desenvolvido exclusivamente para fins acadêmicos na disciplina de Arquitetura de Computadores.
