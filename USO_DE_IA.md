@@ -1,37 +1,31 @@
 # Uso de IA Generativa
 
-Este documento descreve o uso de ferramentas de Inteligência Artificial generativa durante o desenvolvimento deste trabalho, conforme as diretrizes da disciplina.
+Este documento descreve o uso de Inteligência Artificial generativa durante o desenvolvimento deste trabalho, conforme as diretrizes da disciplina.
 
 ---
 
-## Ferramentas, ambientes e modelos utilizados
+## Ferramenta, ambiente e modelos utilizados
 
-| Ferramenta/assistente | Ambiente | Modelo/motor informado | Uso no trabalho |
+| Ferramenta/assistente | Ambiente | Modelos/motores informados | Uso no trabalho |
 |---|---|---|---|
-| Ash (Hermes Agent) | Hermes WebUI | `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M` | Planejamento inicial do trabalho, organização do repositório, explicação de conceitos de CUDA e apoio na revisão dos arquivos do projeto. |
-| Codex | Ambiente Codex | `GPT-5.5` | Refinamento posterior da documentação, correção da declaração de uso de IA e apoio na organização final do repositório. |
+| Ash (Hermes Agent) | Hermes WebUI | `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M`; posteriormente `GPT-5.5` via API/modelos Codex, quando aplicável | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA, revisão e melhoria dos arquivos de código, notebook e documentação. |
 
-> O trabalho começou com o assistente Ash executado via Hermes Agent/Hermes WebUI e, posteriormente, passou a usar o Codex com o modelo/motor GPT-5.5.
+> A ferramenta/assistente utilizada no trabalho foi o **Ash (Hermes Agent)** pela **Hermes WebUI**. Quando houver menção a `GPT-5.5` ou Codex, isso se refere ao **modelo/backend/API usado pelo Ash/Hermes**, e não ao uso do Codex como ferramenta autônoma separada.
 
 ---
 
 ## Ambiente e modelos utilizados
 
-Durante o apoio ao trabalho, foram utilizados dois ambientes de IA generativa:
+Durante o apoio ao trabalho, utilizei o assistente **Ash (Hermes Agent)** acessado pela **Hermes WebUI**.
 
-1. **Ash no Hermes Agent/WebUI**, com o modelo/motor informado pela sessão:
+Ao longo das sessões, os modelos/motores informados foram:
 
 ```text
 gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M
+GPT-5.5 via API/modelos Codex, quando aplicável
 ```
 
-2. **Codex**, com o modelo/motor informado pelo usuário durante a continuidade do trabalho:
-
-```text
-GPT-5.5
-```
-
-Esse registro é incluído para deixar transparente quais ambientes e modelos de IA foram usados no processo de planejamento, revisão e documentação do projeto.
+Não utilizei GitHub Copilot, Claude, ChatGPT nem Codex como ferramentas autônomas para este trabalho. A programação, revisão e orientação foram feitas por meio do Ash/Hermes Agent; eventuais referências a Codex indicam apenas o backend/modelo/API disponível na sessão.
 
 ---
 
@@ -65,15 +59,29 @@ Esse registro é incluído para deixar transparente quais ambientes e modelos de
 
 ---
 
-### 3. Revisão e documentação dos arquivos do repositório
+### 3. Revisão e melhoria do código e do notebook
 
-**Ferramentas:** Ash (Hermes Agent) e Codex
+**Ferramenta:** Ash (Hermes Agent)
 
-**Ambientes/modelos:** Hermes WebUI com `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M` e Codex com `GPT-5.5`
+**Ambiente/modelo:** Hermes WebUI com `GPT-5.5` via API/modelos Codex, quando aplicável
 
-**Quando:** Durante a organização e o refinamento do repositório GitHub.
+**Quando:** Durante a revisão dos arquivos `soma_cpu.c`, `soma_gpu.cu` e `benchmark.ipynb`.
 
-**O que fiz:** Usei IA para revisar e melhorar arquivos de documentação, como `README.md` e este arquivo `USO_DE_IA.md`, além de orientar comandos de Git usando SSH.
+**O que fiz:** Usei a IA para revisar o código, identificar inconsistências, melhorar a validação dos resultados, ajustar o modo de benchmark, organizar o notebook para usar os arquivos reais do repositório e evitar duplicação de código.
+
+**O que aprendi:** Aprendi que um benchmark precisa ter saída fácil de interpretar, validação correta dos resultados e consistência entre o código entregue no repositório e o código executado no notebook.
+
+---
+
+### 4. Documentação e organização do repositório
+
+**Ferramenta:** Ash (Hermes Agent)
+
+**Ambiente/modelo:** Hermes WebUI com `GPT-5.5` via API/modelos Codex, quando aplicável
+
+**Quando:** Durante a organização final do repositório GitHub.
+
+**O que fiz:** Usei IA para revisar e melhorar arquivos de documentação, como `README.md` e este arquivo `USO_DE_IA.md`, deixando claro como executar o projeto e como a IA foi utilizada.
 
 **O que aprendi:** Aprendi a deixar o repositório mais organizado e claro para avaliação, separando código, notebook, resultados, relatório, slides e documentação, e registrando de forma transparente o uso de IA.
 
@@ -81,7 +89,7 @@ Esse registro é incluído para deixar transparente quais ambientes e modelos de
 
 ## Declaração
 
-Declaro que utilizei IA generativa apenas como ferramenta de apoio ao aprendizado, planejamento, documentação e esclarecimento de dúvidas. O código, os resultados e o relatório foram lidos, revisados e compreendidos por mim. Na arguição, sou capaz de explicar as partes do trabalho que foram entregues.
+Declaro que utilizei IA generativa apenas como ferramenta de apoio ao aprendizado, planejamento, documentação, revisão de código e esclarecimento de dúvidas. O código, os resultados e o relatório foram lidos, revisados e compreendidos por mim. Na arguição, sou capaz de explicar as partes do trabalho que foram entregues.
 
 ---
 

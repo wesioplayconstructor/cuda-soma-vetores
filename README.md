@@ -43,14 +43,14 @@ cuda-soma-vetores/
 │   └── soma_gpu.cu             # Implementação paralela em CUDA
 ├── notebook/
 │   └── benchmark.ipynb         # Notebook para executar no Google Colab
-├── resultados/
-│   ├── tempos.csv              # Tempos medidos pelo benchmark
-│   ├── grafico_tempos.png      # Gráfico de tempo CPU vs GPU
-│   └── grafico_speedup.png     # Gráfico de speedup
-├── relatorio/
-│   └── relatorio_sbc.pdf       # Relatório final no template SBC
-├── slides/
-│   └── apresentacao.pdf        # Slides da apresentação
+├── resultados/                 # Arquivos gerados pelo notebook
+│   ├── tempos.csv              # Gerado após executar o benchmark
+│   ├── grafico_tempos.png      # Gerado após executar o benchmark
+│   └── grafico_speedup.png     # Gerado após executar o benchmark
+├── relatorio/                  # Relatório final no template SBC
+│   └── relatorio_sbc.pdf       # Adicionado na etapa final
+├── slides/                     # Slides da apresentação
+│   └── apresentacao.pdf        # Adicionado na etapa final
 ├── docs/
 │   ├── figuras/                # Figuras usadas no relatório/slides
 │   └── referencias/            # Materiais de referência
@@ -107,14 +107,14 @@ O notebook compila os programas, executa os testes, mede os tempos e gera os gr�
 ### Versão CPU
 
 ```fish
-gcc codigo/soma_cpu.c -o soma_cpu -lm
+gcc -std=c11 -O2 -Wall -Wextra codigo/soma_cpu.c -o soma_cpu
 ./soma_cpu 1000000
 ```
 
 ### Versão GPU
 
 ```fish
-nvcc codigo/soma_gpu.cu -o soma_gpu
+nvcc -O2 codigo/soma_gpu.cu -o soma_gpu
 ./soma_gpu 1000000
 ```
 
@@ -132,6 +132,20 @@ O valor `1000000` representa o tamanho do vetor `N`. Ele pode ser alterado para 
 ./soma_gpu 10000000
 ```
 
+Para o modo usado pelo notebook de benchmark, os programas também aceitam a opção `--benchmark`, que imprime apenas uma linha fácil de processar:
+
+```fish
+./soma_cpu 1000000 --benchmark
+./soma_gpu 1000000 --benchmark
+```
+
+Saída esperada nesse modo:
+
+```text
+CPU 3.421000
+GPU 0.842000
+```
+
 ---
 
 ## Metodologia de medição
@@ -147,8 +161,9 @@ Foram testados quatro tamanhos de vetor:
 
 Para cada tamanho, cada versão foi executada **5 vezes**. Em seguida, foi calculada a média dos tempos.
 
-- Na **CPU**, o tempo é medido com `clock_gettime`.
-- Na **GPU**, o tempo é medido com `cudaEvent_t`.
+- Na **CPU**, o tempo é medido com `clock_gettime` apenas no laço de soma sequencial.
+- Na **GPU**, o tempo é medido com `cudaEvent_t` incluindo transferência host→device, execução da kernel, sincronização e transferência device→host.
+- Em ambas as versões, todos os elementos calculados são validados após a medição.
 - O speedup é calculado por:
 
 ```text
@@ -162,11 +177,11 @@ speedup = tempo_CPU / tempo_GPU
 Os primeiros resultados devem seguir o padrão:
 
 ```text
-C[0] = 0
-C[1] = 3
-C[2] = 6
-C[3] = 9
-C[4] = 12
+C[0] = 0 + 0 = 0
+C[1] = 1 + 2 = 3
+C[2] = 2 + 4 = 6
+C[3] = 3 + 6 = 9
+C[4] = 4 + 8 = 12
 ```
 
 Isso acontece porque:
@@ -231,7 +246,7 @@ for (int i = 0; i < N; i++) {
 Implementa a soma de vetores na GPU usando uma kernel CUDA:
 
 ```cuda
-__global__ void somaVetores(float *A, float *B, float *C, int N) {
+__global__ void somaVetores(const float *A, const float *B, float *C, int N) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i < N) {
         C[i] = A[i] + B[i];
@@ -245,13 +260,13 @@ Cada thread calcula um elemento do vetor resultado.
 
 ## Uso de IA generativa
 
-O uso de ferramentas de IA está documentado no arquivo:
+O uso do assistente de IA generativa **Ash (Hermes Agent)**, acessado pela **Hermes WebUI**, está documentado no arquivo:
 
 ```text
 USO_DE_IA.md
 ```
 
-Esse arquivo informa quais ferramentas foram utilizadas, em quais momentos do trabalho e o que foi aprendido com o uso.
+Esse arquivo informa em quais momentos a IA foi usada, quais modelos/motores foram informados nas sessões e o que foi aprendido com o apoio. Quando houver menção a Codex/GPT-5.5, ela se refere ao backend/modelo/API usado pelo Ash/Hermes, e não ao uso do Codex como ferramenta autônoma separada.
 
 ---
 
