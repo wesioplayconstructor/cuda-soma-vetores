@@ -264,20 +264,6 @@ Esse arquivo informa quais ferramentas foram utilizadas, em quais momentos do tr
 
 ---
 
-## Status da entrega
-
-- [x] Código CPU
-- [x] Código GPU
-- [x] Notebook de benchmark
-- [x] README
-- [x] Declaração de uso de IA
-- [ ] Resultados gerados no Colab
-- [ ] Relatório SBC em PDF
-- [ ] Slides em PDF
-- [ ] Envio no Moodle
-
----
-
 ## Licença
 
 Projeto desenvolvido exclusivamente para fins acadêmicos na disciplina de Arquitetura de Computadores.
