@@ -1,46 +1,61 @@
 # Uso de IA Generativa
 
-Este documento descreve o uso de ferramentas de Inteligência Artificial generativa durante o desenvolvimento deste trabalho, conforme as diretrizes do professor.
+Este documento descreve o uso de ferramenta de Inteligência Artificial generativa durante o desenvolvimento deste trabalho, conforme as diretrizes da disciplina.
 
 ---
 
-## Ferramentas utilizadas
+## Ferramenta utilizada
 
-| Ferramenta        | Uso                                              |
-|-------------------|--------------------------------------------------|
-| Ash (Hermes Agent) | Planejamento do trabalho, estrutura do projeto e esclarecimento de conceitos CUDA |
-| ChatGPT / Claude  | Tirar dúvidas pontuais sobre sintaxe C/CUDA e depuração de erros de compilação |
+| Ferramenta | Uso |
+|---|---|
+| Ash (Hermes Agent) | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA e apoio na revisão dos arquivos do projeto. |
 
-> **Atualizar esta tabela conforme for usando outras ferramentas.**
+> Até o momento, a única ferramenta de IA generativa usada neste trabalho foi o Ash (Hermes Agent).
 
 ---
 
 ## Momentos do trabalho em que IA foi usada
 
-### 1. Planejamento e estruturação do projeto
+### 1. Planejamento e organização do projeto
+
 **Ferramenta:** Ash (Hermes Agent)
-**Quando:** Início do trabalho (Fase 1)
-**O que fiz:** Pedi ao Ash para organizar o plano de trabalho, definir a estrutura de pastas do repositório e criar o cronograma com as fases do projeto.
-**O que aprendi:** A importância de planejar antes de codificar — ter um plano claro com fases definidas e checklist evita retrabalho e garante que nada seja esquecido.
 
-### 2. Compreensão dos conceitos de CUDA (kernel, threads, blocos, grid)
-**Ferramenta:** Ash (Hermes Agent) + documentação NVIDIA
-**Quando:** Antes de escrever a versão GPU (Fase 3)
-**O que fiz:** Perguntei sobre a diferença entre host e device memory, como funciona o cálculo do índice global de uma thread (`blockIdx.x * blockDim.x + threadIdx.x`), e por que precisamos do `if (i < N)` na kernel.
-**O que aprendi:** Cada thread na GPU executa o mesmo código mas com índices diferentes — o paralelismo vem de milhares de threads rodando simultaneamente. A verificação `if (i < N)` é necessária porque o número total de threads pode exceder o tamanho do vetor.
+**Quando:** Início do trabalho.
 
-### 3. Depuração de erros de compilação e execução
-**Ferramenta:** ChatGPT / Claude
-**Quando:** Durante a compilação e execução no Colab (Fases 2–4)
-**O que fiz:** Ao encontrar erros de compilação do nvcc ou resultados divergentes entre CPU e GPU, usei a IA para identificar a causa (ex.: esquecimento de `cudaMemcpy`, tipo incorreto de dado) e entender a correção.
-**O que aprendi:** Erros em CUDA frequentemente não geram mensagens claras — é preciso entender o fluxo de memória (alocar → copiar → kernel → copiar de volta) para depurar eficazmente.
+**O que fiz:** Usei a IA para organizar as etapas do trabalho, separar as fases de desenvolvimento, criar uma estrutura de pastas e montar um roteiro de execução com checklist.
+
+**O que aprendi:** Aprendi que dividir o trabalho em etapas menores facilita a execução e evita esquecer partes importantes, como código, notebook, resultados, relatório, slides e declaração de uso de IA.
+
+---
+
+### 2. Compreensão dos conceitos de CUDA
+
+**Ferramenta:** Ash (Hermes Agent)
+
+**Quando:** Durante a preparação da versão paralela em CUDA.
+
+**O que fiz:** Usei a IA para esclarecer conceitos como kernel, thread, bloco, grid, memória do host, memória do device, `cudaMalloc`, `cudaMemcpy` e o cálculo do índice global da thread com `blockIdx.x * blockDim.x + threadIdx.x`.
+
+**O que aprendi:** Entendi que cada thread da GPU executa a mesma kernel, mas trabalha em um índice diferente do vetor. Também entendi por que é necessário usar `if (i < N)`, já que o total de threads lançado pode ser maior que o tamanho real do vetor.
+
+---
+
+### 3. Revisão e documentação dos arquivos do repositório
+
+**Ferramenta:** Ash (Hermes Agent)
+
+**Quando:** Durante a organização do repositório GitHub.
+
+**O que fiz:** Usei a IA para revisar e melhorar arquivos de documentação, como `README.md` e este arquivo `USO_DE_IA.md`, além de orientar comandos de Git usando SSH.
+
+**O que aprendi:** Aprendi a deixar o repositório mais organizado e claro para avaliação, separando código, notebook, resultados, relatório, slides e documentação.
 
 ---
 
 ## Declaração
 
-Declaro que todo o código entregue foi por mim compreendido. Na arguição, sou capaz de explicar qualquer linha dos programas apresentados. O conteúdo do relatório foi escrito por mim, com base no meu entendimento dos conceitos — textos gerados por IA foram lidos, compreendidos e reescritos com minhas próprias palavras.
+Declaro que utilizei IA generativa apenas como ferramenta de apoio ao aprendizado, planejamento, documentação e esclarecimento de dúvidas. O código, os resultados e o relatório foram lidos, revisados e compreendidos por mim. Na arguição, sou capaz de explicar as partes do trabalho que foram entregues.
 
 ---
 
-*Documento criado em 25/05/2026. Atualizar conforme o andamento do trabalho.*
+*Documento criado em 25/05/2026 e atualizado conforme o andamento do trabalho.*
