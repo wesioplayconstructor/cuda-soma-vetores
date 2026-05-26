@@ -8,9 +8,9 @@ Este documento descreve o uso de Inteligência Artificial generativa durante o d
 
 | Ferramenta/assistente | Ambiente | Modelos/motores informados | Uso no trabalho |
 |---|---|---|---|
-| Ash (Hermes Agent) | Hermes WebUI | `gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M`; `GPT-5.5` via API OpenAI; e posteriormente `DeepSeek` (via API compatível com OpenAI) | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA, revisão do código e documentação final. |
+| Ash (Hermes Agent) | Hermes WebUI | Modelos online acessados pelo Hermes, incluindo `Gemma 4` (`gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M`), `GPT-5.5` via API OpenAI e `DeepSeek` via API compatível com OpenAI | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA, revisão do código e documentação final. |
 
-> A ferramenta/assistente utilizada no trabalho foi o **Ash (Hermes Agent)** pela **Hermes WebUI**. Os modelos informados variaram conforme a sessão, incluindo `gemma-4`, `GPT-5.5` (via API OpenAI) e `DeepSeek` (via API compatível com OpenAI).
+> A ferramenta/assistente utilizada no trabalho foi o **Ash (Hermes Agent)** pela **Hermes WebUI**. Os modelos online informados variaram conforme a sessão, incluindo `Gemma 4`, `GPT-5.5` (via API OpenAI) e `DeepSeek` (via API compatível com OpenAI).
 
 ---
 
@@ -21,9 +21,9 @@ Durante o apoio ao trabalho, utilizei o assistente **Ash (Hermes Agent)** acessa
 Ao longo das sessões, os modelos/motores informados foram:
 
 ```text
-gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M
-GPT-5.5 (via API OpenAI)
-DeepSeek (via API compatível com OpenAI)
+Gemma 4 — gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M
+GPT-5.5 — via API OpenAI
+DeepSeek — via API compatível com OpenAI
 ```
 
 Não utilizei GitHub Copilot, Claude, ChatGPT nem Codex como ferramentas autônomas para este trabalho. A programação, revisão e orientação foram feitas por meio do Ash/Hermes Agent.
