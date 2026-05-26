@@ -8,9 +8,9 @@ Este documento descreve o uso de Inteligência Artificial generativa durante o d
 
 | Ferramenta/assistente | Ambiente | Modelos/motores informados | Uso no trabalho |
 |---|---|---|---|
-| Ash (Hermes Agent) | Hermes WebUI | Modelos online acessados pelo Hermes, incluindo `Gemma 4` (`gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M`), `GPT-5.5` via API OpenAI e `DeepSeek` via API compatível com OpenAI | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA, revisão do código e documentação final. |
+| Ash (Hermes Agent) | Hermes WebUI | Modelos online acessados pelo Hermes, incluindo `Gemma 4` (`gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M`), `GPT-5.5` via API OpenAI, `DeepSeek` via API compatível com OpenAI e `Qwen 3.5 9B` | Planejamento do trabalho, organização do repositório, explicação de conceitos de CUDA, revisão do código, documentação final, relatório e slides. |
 
-> A ferramenta/assistente utilizada no trabalho foi o **Ash (Hermes Agent)** pela **Hermes WebUI**. Os modelos online informados variaram conforme a sessão, incluindo `Gemma 4`, `GPT-5.5` (via API OpenAI) e `DeepSeek` (via API compatível com OpenAI).
+> A ferramenta/assistente utilizada no trabalho foi o **Ash (Hermes Agent)** pela **Hermes WebUI**. Os modelos online informados variaram conforme a sessão, incluindo `Gemma 4`, `GPT-5.5` (via API OpenAI), `DeepSeek` (via API compatível com OpenAI) e `Qwen 3.5 9B`.
 
 ---
 
@@ -24,6 +24,7 @@ Ao longo das sessões, os modelos/motores informados foram:
 Gemma 4 — gemma-4-E2B-it-Q8_0-mtp-E2B-Q4_K_M
 GPT-5.5 — via API OpenAI
 DeepSeek — via API compatível com OpenAI
+Qwen 3.5 9B — via Hermes WebUI
 ```
 
 Não utilizei GitHub Copilot, Claude, ChatGPT nem Codex como ferramentas autônomas para este trabalho. A programação, revisão e orientação foram feitas por meio do Ash/Hermes Agent.
@@ -88,10 +89,24 @@ Não utilizei GitHub Copilot, Claude, ChatGPT nem Codex como ferramentas autôno
 
 ---
 
+### 5. Finalização do relatório, notebook e slides
+
+**Ferramenta:** Ash (Hermes Agent)
+
+**Ambiente/modelo:** Hermes WebUI com `Qwen 3.5 9B`
+
+**Quando:** Etapa final de entrega.
+
+**O que fiz:** Usei a IA para revisar a consistência entre README, notebook, relatório e slides, corrigir o ambiente real de execução local/bare metal, ajustar a declaração de uso de IA e gerar/verificar a apresentação em PDF.
+
+**O que aprendi:** Aprendi que os artefatos de entrega precisam contar a mesma história: mesmo ambiente, mesmos arquivos, mesmos resultados e mesmas limitações. Também aprendi que não basta o PDF existir; é necessário compilar, abrir/inspecionar e conferir a quantidade de páginas/slides.
+
+---
+
 ## Declaração
 
 Declaro que utilizei IA generativa apenas como ferramenta de apoio ao aprendizado, planejamento, documentação, revisão de código e esclarecimento de dúvidas. O código, os resultados e o relatório foram lidos, revisados e compreendidos por mim. Na arguição, sou capaz de explicar as partes do trabalho que foram entregues.
 
 ---
 
-*Documento criado em 25/05/2026 e atualizado em 25/05/2026 conforme o andamento do trabalho.*
+*Documento criado em 25/05/2026 e atualizado em 26/05/2026 conforme o andamento do trabalho.*

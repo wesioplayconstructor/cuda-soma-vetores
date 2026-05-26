@@ -1,8 +1,9 @@
 # 📋 LOG DA SESSÃO — Projeto: Soma de Vetores em CUDA
 
-**Data:** 25 de maio de 2026  
+**Data:** 26 de maio de 2026  
 **Agente:** Ash (Servo-Sensei) 🔥  
-**Sessão:** Telegram DM  
+**Contexto:** Finalização do projeto final individual de Arquitetura de Computadores  
+**Repositório:** https://github.com/wesioplayconstructor/cuda-soma-vetores
 
 ---
 
@@ -10,52 +11,69 @@
 
 | Item | Status | Observação |
 |------|--------|-----------|
-| `soma_cpu.c` | ✅ Pronto | Código CPU sequencial |
-| `soma_gpu.cu` | ✅ Pronto | Código GPU paralelo (CUDA) |
-| `benchmark.ipynb` | ✅ Pronto | Notebook Colab reprodutível |
-| `README.md` | ✅ Pronto | Documentação do repo |
-| `USO_DE_IA.md` | ✅ Pronto | Declaração de uso de IA |
-| `.gitignore` | ✅ Pronto | Ignora binários e caches |
-| GitHub repo | ✅ Pronto | `wesioplayconstructor/cuda-soma-vetores` |
-| LaTeX (`main.tex`) | ✅ Pronto | Todas as seções escritas |
-| `sbc-template.bib` | ✅ Pronto | 4 referências bibliográficas |
-| `grid-blocks-threads.png` | ✅ Pronto | Diagrama da hierarquia CUDA |
-| **Resultados CSV** | ✅ Pronto | `tempos.csv` + `tempos_medios.csv` |
-| **Gráfico tempos PNG** | ✅ Pronto | CPU vs GPU em escala log |
-| **Gráfico speedup PNG** | ✅ Pronto | Speedup por tamanho de vetor |
-| **Relatório PDF** | ✅ Pronto | `relatorio_sbc.pdf` (23KB) |
-| **Slides PDF** | ✅ Pronto | `apresentacao.pdf` (22KB, 10+ slides) |
-| **Git push final** | ✅ Pronto | Commit `12552ee` |
+| `codigo/soma_cpu.c` | ✅ Pronto | Código CPU sequencial compilado com `gcc` |
+| `codigo/soma_gpu.cu` | ✅ Pronto | Código GPU CUDA compilado com `nvcc` |
+| `notebook/benchmark.ipynb` | ✅ Atualizado | Fluxo local/bare metal, sem serviço externo como caminho principal e sem dependência de `pandas` |
+| `README.md` | ✅ Atualizado | Instruções locais com `gcc`, `nvcc`, `nvidia-smi`, Jupyter e `matplotlib` |
+| `USO_DE_IA.md` | ✅ Atualizado | Preserva Gemma 4, GPT-5.5 e DeepSeek; adiciona Qwen 3.5 9B |
+| Resultados CSV | ✅ Presentes | `resultados/tempos.csv` e `resultados/tempos_medios.csv` |
+| Gráficos PNG | ✅ Presentes | `grafico_tempos.png`, `grafico_speedup.png`, `grid-blocks-threads.png` |
+| Relatório PDF | ✅ Compilado | `relatorio/relatorio_sbc.pdf`, 10 páginas |
+| Slides PDF | ✅ Compilado | `slides/apresentacao.pdf`, 12 slides |
+| GitHub | ✅ Atualizado | Commit/push final realizado após verificação |
 
 ---
 
-## 🏗️ Ações desta Sessão
+## 🧪 Verificações feitas nesta finalização
 
-### 1. Geração de Resultados e Gráficos (Ash direto)
-✅ `tempos.csv` — 20 linhas (4 tamanhos × 5 runs)  
-✅ `tempos_medios.csv` — médias e desvios  
-✅ `grafico_tempos.png` — CPU vs GPU escala log  
-✅ `grafico_speedup.png` — barras com speedup  
-✅ `grid-blocks-threads.png` — diagrama hierarquia CUDA  
+### Código
 
-### 2. Compilação do Relatório (Sub-Agent)
-✅ `main.tex` compilado com `pdflatex` (2 passagens)  
-✅ PDF copiado para `relatorio/relatorio_sbc.pdf`  
+```text
+gcc -std=c11 -O2 -Wall -Wextra codigo/soma_cpu.c -o soma_cpu
+nvcc -O2 codigo/soma_gpu.cu -o soma_gpu
+```
 
-### 3. Criação de Slides (Sub-Agent)
-✅ `apresentacao.pdf` gerado com LaTeX Beamer  
-✅ ~10-12 slides cobrindo todo o conteúdo  
+Resultado:
 
-### 4. Organização e Commit (Ash)
-✅ Git add, commit, push (`12552ee`)  
-✅ LOG compartilhado via Telegram  
+- ✅ Compilação CPU concluída.
+- ✅ Compilação GPU concluída.
+- ✅ Smoke test CPU com `N=10` validou os primeiros resultados.
+- ⚠️ Smoke test GPU não foi repetido nesta sessão porque a VRAM estava ocupada pelo próprio ambiente local de IA/Hermes/Qwen, causando `cudaMemGetInfo: out of memory`. O código CUDA compilou; para rerodar benchmark real, liberar a VRAM antes de executar `./soma_gpu` ou o notebook.
+
+### Relatório
+
+```text
+pdflatex -> bibtex -> pdflatex -> pdflatex
+pdfinfo main.pdf
+pdftotext main.pdf - | wc -l
+```
+
+Resultado:
+
+- ✅ Sem erros LaTeX críticos no log.
+- ✅ PDF gerado com 10 páginas.
+- ✅ Texto extraído com conteúdo real (~393 linhas).
+- ✅ Ambiente corrigido para notebook Acer Nitro V15 + RTX 4050 Laptop GPU + CachyOS.
+
+### Slides
+
+```text
+pdflatex apresentacao.tex
+pdfinfo apresentacao.pdf
+```
+
+Resultado:
+
+- ✅ Slides recompilados sem erros críticos.
+- ✅ PDF gerado com 12 páginas/slides.
+- ✅ Slides usam gráficos e diagrama reais do projeto.
 
 ---
 
-## 📊 Dados de Benchmark
+## 📊 Dados de Benchmark registrados
 
 | N | CPU (ms) | GPU (ms) | Speedup |
-|---|----------|----------|---------|
+|---:|---:|---:|---:|
 | 1.000 | 0,0042 | 0,1681 | 0,02x |
 | 100.000 | 0,3207 | 0,2076 | 1,54x |
 | 1.000.000 | 3,1630 | 0,3349 | 9,45x |
@@ -63,12 +81,32 @@
 
 ---
 
-## 🔗 Links Úteis
+## 📦 Arquivos finais principais
 
-- **GitHub:** https://github.com/wesioplayconstructor/cuda-soma-vetores
-- **Colab:** https://colab.research.google.com/github/wesioplayconstructor/cuda-soma-vetores/blob/main/notebook/benchmark.ipynb
+```text
+cuda-soma-vetores/README.md
+cuda-soma-vetores/USO_DE_IA.md
+cuda-soma-vetores/codigo/soma_cpu.c
+cuda-soma-vetores/codigo/soma_gpu.cu
+cuda-soma-vetores/notebook/benchmark.ipynb
+cuda-soma-vetores/resultados/tempos.csv
+cuda-soma-vetores/resultados/tempos_medios.csv
+cuda-soma-vetores/resultados/grafico_tempos.png
+cuda-soma-vetores/resultados/grafico_speedup.png
+cuda-soma-vetores/relatorio/relatorio_sbc.pdf
+cuda-soma-vetores/slides/apresentacao.pdf
+```
 
 ---
 
-*Documento criado por Ash 🔥 — 25/05/2026*  
-*Última atualização: commit `12552ee`*
+## 📝 Próximo passo manual no Moodle
+
+Enviar:
+
+1. Link do GitHub: https://github.com/wesioplayconstructor/cuda-soma-vetores
+2. PDF do relatório: `relatorio/relatorio_sbc.pdf`
+3. PDF dos slides: `slides/apresentacao.pdf`
+
+---
+
+*Documento atualizado por Ash 🔥 — 26/05/2026*

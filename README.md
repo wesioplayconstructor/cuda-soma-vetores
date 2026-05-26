@@ -67,6 +67,7 @@ Este projeto foi preparado para execução local em uma máquina Linux com GPU N
 - `nvcc` do CUDA Toolkit para compilar a versão GPU.
 - Driver NVIDIA funcionando.
 - Python/Jupyter, caso o notebook de benchmark seja usado.
+- `matplotlib`, para gerar os gráficos no notebook.
 
 ### Verificar GPU NVIDIA
 
@@ -293,7 +294,7 @@ O uso do assistente de IA generativa **Ash (Hermes Agent)**, acessado pela **Her
 USO_DE_IA.md
 ```
 
-Esse arquivo informa em quais momentos a IA foi usada, quais modelos online foram informados nas sessões (`Gemma 4`, `GPT-5.5` via API OpenAI, `DeepSeek` via API compatível) e o que foi aprendido com o apoio.
+Esse arquivo informa em quais momentos a IA foi usada, quais modelos online foram informados nas sessões (`Gemma 4`, `GPT-5.5` via API OpenAI, `DeepSeek` via API compatível e `Qwen 3.5 9B`) e o que foi aprendido com o apoio.
 
 ---
 
