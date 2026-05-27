@@ -47,7 +47,11 @@ cuda-soma-vetores/
 │   ├── grafico_tempos.png
 │   └── grafico_speedup.png
 ├── relatorio/                  # PDF final do relatório
-├── slides/                     # PDF dos slides
+├── slides/                     # Slides da apresentação (PPTX; PDF se exportado)
+├── scripts/
+│   └── demo_ao_vivo.sh         # Demo guiada para apresentar CPU e GPU ao vivo
+├── aliases/
+│   └── cuda-demo.fish          # Função Fish opcional para rodar a demo
 ├── prompts/                    # Prompts usados/registrados no projeto
 │   └── PROMPTS_USADOS.md
 ├── docs/
@@ -84,6 +88,32 @@ Se o comando mostrar a GPU, o driver está ativo.
 ```fish
 gcc --version
 nvcc --version
+```
+
+---
+
+## Demo ao vivo para apresentação
+
+Para testar CPU e GPU em sequência durante a apresentação, use:
+
+```fish
+cuda-demo
+```
+
+Esse comando mostra a GPU, confere compiladores, compila `soma_cpu.c` e `soma_gpu.cu`, roda um teste visual com `N=10`, executa um benchmark rápido e exibe a tabela oficial do relatório.
+
+Se o alias não estiver carregado no terminal, rode diretamente:
+
+```fish
+bash scripts/demo_ao_vivo.sh
+```
+
+Para testar também o maior tamanho (`10.000.000`) durante a apresentação:
+
+```fish
+cuda-demo --full
+# ou
+bash scripts/demo_ao_vivo.sh --full
 ```
 
 ---
