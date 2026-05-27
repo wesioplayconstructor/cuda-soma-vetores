@@ -48,6 +48,8 @@ cuda-soma-vetores/
 │   └── grafico_speedup.png
 ├── relatorio/                  # PDF final do relatório
 ├── slides/                     # PDF dos slides
+├── prompts/                    # Prompts usados/registrados no projeto
+│   └── PROMPTS_USADOS.md
 ├── docs/
 │   ├── figuras/
 │   └── referencias/
